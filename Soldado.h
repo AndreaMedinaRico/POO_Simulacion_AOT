@@ -3,8 +3,8 @@
 * Proyecto Simulación AOT clase Soldado
 * Andrea Medina Rico 
 * A01705541
-* 26/05/2023
-* versio: 1
+* 02/06/2023
+* versio: 2
 * Esta clase define objeto de tipo Soldado
 * Exploración, Guarnición y Militar
 */
@@ -24,54 +24,73 @@ class Soldado {
         int edad;
         int nivel;
         int vida = 100;
+
     public:
         Soldado(): nombre(""), edad(0), nivel(0) {};
         Soldado(string nom, int ed, int niv): nombre(nom), edad(ed), nivel(niv) {};
 
-        string get_nombre() {
+        string getNombre() {
             return nombre;
         }
-        int get_edad() {
+        int getEdad() {
             return edad;
         }
-        int get_nivel() {
+        int getNivel() {
             return nivel;
         }
-        int get_vida() {
+        int getVida() {
             return vida;
         }
 
-        string defender();
+        void setEdad(int ed) {
+            edad = ed;
+        }
+        void setNivel(int niv) {
+            nivel = niv;
+        }
+        void setVida(int vid) {
+            vida = vid;
+        }
+        void bajarVida(int dano) {
+            vida = vida - dano;
+        }
+
+        virtual int atacar() {
+            return nivel*edad;
+        }
 };
 
 
-// Objeto Exploracion que hereda de Soldado 
+// Clase Exploracion que hereda de Soldado 
 class Exploracion: public Soldado {
     private:
         int hab_corte;
-    public:
-        Exploracion(int ko):hab_corte(ko), Soldado() {};
 
-        int get_corte() {
+    public:
+        Exploracion(): hab_corte(0), Soldado() {};
+        Exploracion(string nom, int ed, int niv, int cor): hab_corte(cor), Soldado(nom, ed, niv) {};
+
+        int getCorte() {
             return hab_corte;
         }
+        void setCorte(int cort) {
+            hab_corte = cort;
+        };
 
-        string atacar();
-        string cortar();
+        int atacar();
+        int cortar();
 };
 
 /**
 * atacar() calcula el daño de un ataque
 *
-*
-*
 * @param
-* @return string con información del nombre y ataque
+* @return int con valor del ataque
 */
-string Exploracion::atacar() {
+
+int Exploracion::atacar() {
     int experiencia = 0;
     int ataque = 0;
-    stringstream info;
 
     if (edad <= 18) {
         experiencia = 30;
@@ -86,22 +105,19 @@ string Exploracion::atacar() {
     experiencia = experiencia * 15;
     ataque = experiencia + nivel;
     
-    info << "El ataque de " << nombre << " es de: " << ataque << ".";
-    return info.str();
+    cout << "El ataque de " << nombre << " es de: " << ataque << "." << endl;
+    return ataque;
 }
 
 /**
-* cortar() calcula el daño de un corte 
-*
-*
+* cortar() regresa el daño de un corte
 *
 * @param
-* @return string con información del nombre y corte
+* @return int con valor dek corte
 */
-string Exploracion::cortar() {
-    stringstream info;
-    info << "El corte de " << nombre << " es de: " << hab_corte << ".";
-    return info.str();
+int Exploracion::cortar() {
+    cout << "El corte de " << nombre << " es de: " << hab_corte << "." << endl;
+    return hab_corte;
 }
 
 
@@ -110,29 +126,29 @@ class Guarnicion: public Soldado {
     private:
         int hab_deteccion;
     public:
+        Guarnicion(): hab_deteccion(0), Soldado() {};
+        Guarnicion(string nom, int ed, int niv, int det): hab_deteccion(det), Soldado(nom, ed, niv) {};
 
-        Guarnicion(int det): hab_deteccion(det), Soldado() {};
-
-        int get_deteccion() {
+        int getDeteccion() {
             return hab_deteccion;
         }
+        void setDeteccion(int det) {
+            hab_deteccion = det;
+        }
 
-        string atacar();
-        string atacar_lejano(int canon);
+        int atacar();
+        int atacar_lejano();
 };
 
 /**
 * atacar() calcula el daño de un ataque
 *
-*
-*
 * @param
-* @return string con información del nombre y ataque
+* @return int con valor del ataque
 */
-string Guarnicion::atacar() {
+int Guarnicion::atacar() {
     int experiencia = 0;
     int ataque = 0;
-    stringstream info;
 
     if (edad <= 18) {
         experiencia = 20;
@@ -147,25 +163,22 @@ string Guarnicion::atacar() {
     experiencia = experiencia * 5;
     ataque = experiencia + nivel;
     
-    info << "El ataque de " << nombre << " es de: " << ataque << ".";
-    return info.str();
+    cout << "El ataque de " << nombre << " es de: " << ataque << "." << endl;
+    return ataque;
 }
 
 /**
 * atacar_lejano() calcula el daño de un ataque con cañón
 *
-*
-*
-* @param int con el daño del cañón
-* @return string con información del nombre y ataque con cañón
+* @param 
+* @return int con valor del ataque
 */
-string Guarnicion::atacar_lejano(int canon) {
-    stringstream info;
+int Guarnicion::atacar_lejano() {
     int ataque = 0;
 
-    ataque = canon + nivel;
-    info << "El ataque de " << nombre << " con cañón es de: " << ataque << ".";
-    return info.str();
+    ataque = hab_deteccion + nivel;
+    cout << "El ataque de " << nombre << " con cañón es de: " << ataque << ".";
+    return ataque;
 }
 
 
@@ -175,27 +188,24 @@ class Militar: public Soldado {
         int hab_salvacion;
     public:
         Militar(int sal): hab_salvacion(sal), Soldado() {};
+        Militar(string nom, int ed, int niv, int sal):hab_salvacion(sal), Soldado(nom, ed, niv) {};
 
-        int get_salvacion() {
+        int atacar();
+
+        int salvar() {
             return hab_salvacion;
-        }
-
-        string atacar();
-        string salvar();
+        };
 };
 
 /**
 * atacar() calcula el daño de un ataque
 *
-*
-*
 * @param
-* @return string con información del nombre y ataque
+* @return int con valor del ataque
 */
-string Militar::atacar() {
+int Militar::atacar() {
     int experiencia = 0;
     int ataque = 0;
-    stringstream info;
 
     if (edad <= 18) {
         experiencia = 25;
@@ -210,24 +220,8 @@ string Militar::atacar() {
     experiencia = experiencia * 10;
     ataque = experiencia + nivel;
     
-    info << "El ataque de " << nombre << " es de: " << ataque << ".";
-    return info.str();
+    cout << "El ataque de " << nombre << " es de: " << ataque << "." << endl;
+    return ataque;
 }
-
-/**
-* salvar() muestra la habilidad del soldado para salvar civiles
-*
-*
-*
-* @param
-* @return string con información del nombre y 
-*/
-string Militar::salvar() {
-    stringstream info;
-    int personas = hab_salvacion / 100;
-
-    info << nombre << " puede salvar a " << personas << " personas. Ha salvado a una.";
-    return info.str();
-}  
 
 #endif
