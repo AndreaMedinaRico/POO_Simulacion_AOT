@@ -3,8 +3,8 @@
 * Proyecto Simulación AOT clase Titán
 * Andrea Medina Rico 
 * A01705541
-* 02/06/2023
-* versio: 1
+* 09/06/2023
+* versio: 2
 * Esta clase define objeto de tipo Titán
 * 
 */

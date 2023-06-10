@@ -3,8 +3,8 @@
 * Proyecto Simulación AOT clase Soldado
 * Andrea Medina Rico 
 * A01705541
-* 02/06/2023
-* versio: 2
+* 09/06/2023
+* versio: 3
 * Esta clase define objeto de tipo Soldado
 * Exploración, Guarnición y Militar
 */
@@ -55,9 +55,8 @@ class Soldado {
             vida = vida - dano;
         }
 
-        virtual int atacar() {
-            return nivel*edad;
-        }
+        // Se declara como clase abstracta
+        virtual int atacar() = 0;
 };
 
 

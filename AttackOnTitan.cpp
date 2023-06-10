@@ -2,8 +2,8 @@
  * Proyecto simulación AOT
  * Andrea Medina Rico
  * A01705541
- * 02/06/2023
- *
+ * 09/06/2023
+ * versio: 2
  * Este es un proyecto demo para la clase TC1030 Programación Orientado a
  * Objetos. Es un programa que captura diferentes tipos de soldados con 
  * sus características y simula su interacción con titanes creeados.
