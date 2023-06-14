@@ -8,4 +8,5 @@ Las características de los soldados son acorde a lo que se observa en el progra
 
 
 ## Restricciones
+El inventario sólo puede almacenar 10 objetos en cada arreglo. 
 Un titán sólo puede derrotar a 5 soldados. Sobrepasar el límite generará error. 
