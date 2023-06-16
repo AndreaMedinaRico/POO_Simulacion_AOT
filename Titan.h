@@ -75,6 +75,7 @@ int Titan::atacar(Soldado *sold) {
         }
     }
 
+    cout << "El titan ya fue derrotado, ya no puede atacar." << "\n \n";
     return sold -> getVida();
 }
 
@@ -153,7 +154,7 @@ void Titan::imprimirTitan() {
     cout << "Altura: \n" << altura << "\n" <<
             "Vida: \n" << vida << "\n" <<
             "Civiles atacados: \n" << civiles << "\n" <<
-            "Soldados derrotados: \n" << cont << endl;
+            "Soldados derrotados: \n" << cont << "\n \n";
 }
 
 #endif

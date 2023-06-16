@@ -25,6 +25,7 @@ int main() {
     Soldado *militar[10];
     Titan *titanes[10];
 
+    //Podrían ser 10 aquí
     int contExp = 0;
     int contGuar = 0;
     int contMil = 0;
@@ -66,18 +67,21 @@ int main() {
                 exploracion[contExp] -> crear();
                 
                 inv.agregar(exploracion[contExp], "Exploracion");
+                contExp++;
                 
             } else if (opcion_1 == 2) {
                 guarnicion[contGuar] = new Guarnicion();
                 guarnicion[contGuar] -> crear();
 
                 inv.agregar(guarnicion[contGuar], "Guarnicion");
+                contGuar++;
 
             } else if (opcion_1 == 3) {
                 militar[contMil] = new Militar();
                 militar[contMil] -> crear();
 
                 inv.agregar(militar[contMil], "Militar");
+                contMil++;
 
             } else {
                 cout << "Opcion no valida";
@@ -86,11 +90,13 @@ int main() {
         // OPCIoN 2 
         } else if (opcion == 2) {
             int altura = 0;
-            cout << "¿Que altura deseas que tenga tu titan? \n" << endl;
+            cout << "¿Que altura deseas que tenga tu titan? \n" << 
+            "Selecciona un rango entre 3 y 8 metros. \n" << endl;
             std::cin >> altura;
 
             titanes[contTit] = new Titan(altura);
             inv.agregar(titanes[contTit]);
+            contTit++;
 
         // OPCIoN 3
         } else if (opcion == 3) {

@@ -180,7 +180,7 @@ void Exploracion::imprimir() {
             "\n Edad: " << edad << 
             "\n Nivel: " << nivel << 
             "\n Vida: " << vida << 
-            "\n Habilidad de corte: " << hab_corte << endl;
+            "\n Habilidad de corte: " << hab_corte << "\n \n";
 }
 
 
@@ -288,7 +288,7 @@ void Guarnicion::imprimir() {
             "\n Edad: " << edad << 
             "\n Nivel: " << nivel << 
             "\n Vida: " << vida << 
-            "\n Habilidad de deteccion: " << hab_deteccion << endl;
+            "\n Habilidad de deteccion: " << hab_deteccion << "\n \n";
 }
 
 
@@ -343,7 +343,7 @@ int Militar::atacar() {
     experiencia = experiencia * 10;
     ataque = experiencia + nivel;
     
-    cout << "El ataque de " << nombre << " es de: " << ataque << "." << endl;
+    cout << "El ataque de " << nombre << " es de: " << ataque << "." << "\n \n";
     return ataque;
 }
 
@@ -377,7 +377,7 @@ void Militar::imprimir() {
             "Edad: " << edad << "\n" <<
             "Nivel: " << nivel << "\n" <<
             "Vida: " << vida << "\n" <<
-            "Habilidad de salvacion: " << hab_salvacion << endl;
+            "Habilidad de salvacion: " << hab_salvacion << "\n \n";
 }
 
 #endif
