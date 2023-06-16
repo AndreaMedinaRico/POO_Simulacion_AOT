@@ -129,14 +129,10 @@ int main() {
 
             if (tipo == 1) {
                 indice = inv.buscarNombre("Exploracion", nombre);
-                cout << indice << endl;
-                exploracion[indice] -> imprimir();
             } else if (tipo == 2) {
                 indice = inv.buscarNombre("Guarnicion", nombre);
-                cout << indice << endl;
             } else if (tipo == 3) {
                 indice = inv.buscarNombre("Militar", nombre);
-                cout << indice << endl;
             }
 
             cout << "¿Que numero de titan deseas? \n" << "(La cuenta de titanes comienza en 0)" << endl;
